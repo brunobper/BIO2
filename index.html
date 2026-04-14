@@ -1,0 +1,964 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio — Prova Dinho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #07080f;
+            --s1: #0d0f1c;
+            --s2: #121526;
+            --s3: #171b30;
+            --b: #1c2240;
+            --b2: #22294d;
+            --c1: #4ade80;
+            --c2: #60a5fa;
+            --c3: #fb923c;
+            --c4: #f472b6;
+            --c5: #facc15;
+            --c6: #a78bfa;
+            --c7: #34d399;
+            --t: #e8eaf6;
+            --td: #8b90b8;
+            --tm: #454a72;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--t);
+            font-family: 'IBM Plex Sans',sans-serif;
+            font-size: 14px;
+            line-height: 1.65;
+            overflow-x: hidden
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: rgba(7,8,15,.97);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--b)
+        }
+
+        .nw {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 14px;
+            height: 50px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            max-width: 880px;
+            margin: 0 auto
+        }
+
+            .nw::-webkit-scrollbar {
+                display: none
+            }
+
+        .nb {
+            white-space: nowrap;
+            padding: 5px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--b);
+            background: none;
+            color: var(--td);
+            font: 500 11px/1 'IBM Plex Sans',sans-serif;
+            cursor: pointer;
+            transition: .15s;
+            flex-shrink: 0
+        }
+
+            .nb:hover, .nb.on {
+                background: var(--c1);
+                border-color: var(--c1);
+                color: #000;
+                font-weight: 600
+            }
+
+        .nlogo {
+            font: 800 13px/1 'Syne',sans-serif;
+            color: var(--c1);
+            flex-shrink: 0;
+            margin-right: 6px
+        }
+
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 62px 14px 60px
+        }
+
+        .hero {
+            padding: 36px 0 28px;
+            text-align: center
+        }
+
+            .hero h1 {
+                font: 800 clamp(24px,6vw,44px)/1.1 'Syne',sans-serif;
+                margin-bottom: 8px
+            }
+
+                .hero h1 em {
+                    color: var(--c1);
+                    font-style: normal
+                }
+
+            .hero p {
+                color: var(--td);
+                font-size: 13px;
+                margin-bottom: 16px
+            }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center
+        }
+
+        .chip {
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #061a0e;
+            color: var(--c1);
+            border: 1px solid #0d4020
+        }
+
+        .sec {
+            margin-bottom: 40px;
+            scroll-margin-top: 58px
+        }
+
+        .sh {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--b)
+        }
+
+        .si {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0
+        }
+
+        .si-g {
+            background: #061a0e
+        }
+
+        .si-b {
+            background: #05101f
+        }
+
+        .si-o {
+            background: #1a0c05
+        }
+
+        .si-p {
+            background: #1a0a12
+        }
+
+        .si-y {
+            background: #1a1505
+        }
+
+        .st {
+            font: 700 19px/1.2 'Syne',sans-serif
+        }
+
+        .card {
+            background: var(--s1);
+            border: 1px solid var(--b);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 12px
+        }
+
+        .ct {
+            font: 600 14px/1.3 'IBM Plex Sans',sans-serif;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--t)
+        }
+
+            .ct::before {
+                content: '';
+                display: block;
+                width: 3px;
+                height: 15px;
+                border-radius: 2px;
+                flex-shrink: 0;
+                background: var(--c1)
+            }
+
+            .ct.b::before {
+                background: var(--c2)
+            }
+
+            .ct.o::before {
+                background: var(--c3)
+            }
+
+            .ct.p::before {
+                background: var(--c4)
+            }
+
+            .ct.y::before {
+                background: var(--c5)
+            }
+
+        p {
+            color: var(--td);
+            margin-bottom: 8px;
+            font-size: 13.5px
+        }
+
+        strong {
+            color: var(--t)
+        }
+
+        .t {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            margin: 8px 0
+        }
+
+            .t th {
+                background: var(--s2);
+                padding: 7px 9px;
+                text-align: left;
+                border: 1px solid var(--b);
+                font-weight: 600
+            }
+
+                .t th.g {
+                    color: var(--c1)
+                }
+
+                .t th.b {
+                    color: var(--c2)
+                }
+
+                .t th.p {
+                    color: var(--c4)
+                }
+
+            .t td {
+                padding: 7px 9px;
+                border: 1px solid var(--b);
+                color: var(--td);
+                vertical-align: top
+            }
+
+            .t tr:nth-child(even) td {
+                background: rgba(255,255,255,.013)
+            }
+
+        .h {
+            border-radius: 10px;
+            padding: 11px 13px;
+            margin: 8px 0;
+            font-size: 13px
+        }
+
+        .hg {
+            background: #061a0e;
+            border: 1px solid #0d4020;
+            color: var(--c1)
+        }
+
+        .hb {
+            background: #05101f;
+            border: 1px solid #0d2a50;
+            color: var(--c2)
+        }
+
+        .ho {
+            background: #1a0c05;
+            border: 1px solid #4d2510;
+            color: var(--c3)
+        }
+
+        .hr {
+            background: #1a0505;
+            border: 1px solid #4d1010;
+            color: #f87171
+        }
+
+        .hp {
+            background: #12061a;
+            border: 1px solid #35106b;
+            color: var(--c6)
+        }
+
+        .h b {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            opacity: .75
+        }
+
+        .f {
+            background: var(--s2);
+            border: 1px solid var(--b);
+            border-radius: 7px;
+            padding: 8px 12px;
+            font: 500 12.5px/1.5 'Courier New',monospace;
+            color: var(--c7);
+            margin: 7px 0;
+            text-align: center
+        }
+
+        ul.l {
+            padding-left: 18px;
+            color: var(--td);
+            font-size: 13.5px
+        }
+
+            ul.l li {
+                margin-bottom: 5px
+            }
+
+        .dc {
+            background: var(--s1);
+            border: 1px solid var(--b);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start
+        }
+
+        .dc-icon {
+            font-size: 22px;
+            flex-shrink: 0;
+            margin-top: 2px
+        }
+
+        .dc-name {
+            font: 700 14px/1.3 'Syne',sans-serif;
+            color: var(--t);
+            margin-bottom: 4px
+        }
+
+        .dc-meta {
+            font-size: 12px;
+            color: var(--td);
+            line-height: 1.6
+        }
+
+        .graph-box {
+            background: var(--s2);
+            border: 1px solid var(--b);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px
+        }
+
+        .graph-title {
+            font: 600 13px/1.3 'IBM Plex Sans',sans-serif;
+            color: var(--c5);
+            margin-bottom: 10px
+        }
+
+        canvas {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 8px
+        }
+
+        .qblock {
+            background: var(--s2);
+            border: 1px solid var(--b);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px
+        }
+
+        .qtag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 9px;
+            background: #05101f;
+            color: var(--c2)
+        }
+
+        .qe {
+            font-size: 13.5px;
+            color: var(--t);
+            margin-bottom: 11px;
+            line-height: 1.6
+        }
+
+        .qopts {
+            list-style: none;
+            margin-bottom: 10px
+        }
+
+            .qopts li {
+                padding: 7px 11px;
+                border-radius: 8px;
+                border: 1px solid var(--b);
+                margin-bottom: 5px;
+                font-size: 12.5px;
+                color: var(--td);
+                cursor: pointer;
+                transition: .15s
+            }
+
+                .qopts li:hover {
+                    border-color: var(--c2);
+                    color: var(--t)
+                }
+
+                .qopts li.ok {
+                    background: #061a0e;
+                    border-color: var(--c1);
+                    color: var(--c1)
+                }
+
+                .qopts li.no {
+                    background: #1a0505;
+                    border-color: #f87171;
+                    color: #f87171
+                }
+
+        .qbtn {
+            padding: 7px 16px;
+            border-radius: 8px;
+            border: none;
+            background: var(--c2);
+            color: #000;
+            font: 600 12px/1 'IBM Plex Sans',sans-serif;
+            cursor: pointer
+        }
+
+            .qbtn:disabled {
+                opacity: .35;
+                cursor: default
+            }
+
+        .qexp {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #061a0e;
+            border: 1px solid #0d4020;
+            color: var(--c1);
+            font-size: 12.5px;
+            display: none
+        }
+
+            .qexp.on {
+                display: block
+            }
+
+        #qz {
+            background: var(--s1);
+            border: 1px solid var(--b);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 12px
+        }
+
+        .qpbar {
+            height: 3px;
+            background: var(--b);
+            border-radius: 2px;
+            margin-bottom: 18px;
+            overflow: hidden
+        }
+
+        .qpfill {
+            height: 100%;
+            background: linear-gradient(90deg,var(--c1),var(--c2));
+            border-radius: 2px;
+            transition: width .35s
+        }
+
+        .qnum {
+            font-size: 10px;
+            color: var(--tm);
+            margin-bottom: 7px;
+            letter-spacing: .04em
+        }
+
+        .qq {
+            font-size: 14px;
+            color: var(--t);
+            margin-bottom: 14px;
+            line-height: 1.6
+        }
+
+        .qopt {
+            width: 100%;
+            padding: 9px 13px;
+            border-radius: 9px;
+            border: 1px solid var(--b);
+            background: none;
+            color: var(--td);
+            font: 400 12.5px/1.4 'IBM Plex Sans',sans-serif;
+            cursor: pointer;
+            text-align: left;
+            margin-bottom: 6px;
+            transition: .15s
+        }
+
+            .qopt:hover:not(:disabled) {
+                border-color: var(--c2);
+                color: var(--t)
+            }
+
+            .qopt.ok {
+                background: #061a0e;
+                border-color: var(--c1);
+                color: var(--c1)
+            }
+
+            .qopt.no {
+                background: #1a0505;
+                border-color: #f87171;
+                color: #f87171
+            }
+
+        .qfb {
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 12.5px;
+            display: none
+        }
+
+            .qfb.on {
+                display: block
+            }
+
+            .qfb.ok {
+                background: #061a0e;
+                border: 1px solid #0d4020;
+                color: var(--c1)
+            }
+
+            .qfb.no {
+                background: #1a0505;
+                border: 1px solid #4d1010;
+                color: #f87171
+            }
+
+        .qnxt {
+            margin-top: 10px;
+            padding: 9px 20px;
+            border-radius: 9px;
+            border: none;
+            background: var(--c1);
+            color: #000;
+            font: 600 13px/1 'IBM Plex Sans',sans-serif;
+            cursor: pointer;
+            display: none
+        }
+
+            .qnxt.on {
+                display: inline-block
+            }
+
+        .qres {
+            text-align: center;
+            padding: 20px
+        }
+
+            .qres .sc {
+                font: 800 50px/1 'Syne',sans-serif
+            }
+
+            .qres p {
+                color: var(--td);
+                margin-top: 8px;
+                font-size: 14px
+            }
+
+        .qrestart {
+            margin-top: 14px;
+            padding: 11px 26px;
+            border-radius: 11px;
+            border: none;
+            background: var(--c1);
+            color: #000;
+            font: 700 13px/1 'Syne',sans-serif;
+            cursor: pointer
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--tm);
+            font-size: 11.5px;
+            border-top: 1px solid var(--b)
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nw">
+            <span class="nlogo">🦠</span>
+            <button class="nb on" onclick="go('proc')">Procariotos</button>
+            <button class="nb" onclick="go('bact')">Bacterioses</button>
+            <button class="nb" onclick="go('tbk')">Tuberculose</button>
+            <button class="nb" onclick="go('resist')">Resistência</button>
+            <button class="nb" onclick="go('ident')">Identificação</button>
+            <button class="nb" onclick="go('mosq')">Mosquitos</button>
+            <button class="nb" onclick="go('graficos')">Gráficos</button>
+            <button class="nb" onclick="go('qs')">Questões & Quiz</button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <h1>Biologia — <em>Prova Dinho</em></h1>
+            <p>Foco Total Ensino Médio: Gráficos, Resistência, Doenças e Vetores</p>
+            <div class="chips">
+                <span class="chip">Revisão Direto ao Ponto</span>
+            </div>
+        </div>
+
+        <div class="sec" id="proc">
+            <div class="sh"><div class="si si-g">🦠</div><div class="st">Classificação dos Procariotos</div></div>
+
+            <div class="card">
+                <div class="ct">Características Essenciais (O que cai)</div>
+                <ul class="l">
+                    <li><strong>Não possuem núcleo:</strong> O DNA fica solto no citoplasma.</li>
+                    <li><strong>Não possuem organelas membranosas:</strong> (sem mitocôndria, sem complexo de golgi, etc).</li>
+                    <li><strong>Possuem Parede Celular:</strong> É aqui que muitos antibióticos agem para destruir a bactéria.</li>
+                </ul>
+                <div class="sub">Formas Básicas:</div>
+                <ul class="l">
+                    <li><strong>Cocos:</strong> Bolinhas (formam colônias como estafilococos).</li>
+                    <li><strong>Bacilos:</strong> Bastonetes (ex: Bacilo de Koch da Tuberculose).</li>
+                    <li><strong>Espirilos/Espiroquetas:</strong> Espirais (ex: Sífilis, Leptospirose).</li>
+                    <li><strong>Vibriões:</strong> Formato de vírgula (ex: Cólera).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sec" id="bact">
+            <div class="sh"><div class="si si-g">🧫</div><div class="st">Bacterioses e Fator Socioeconômico</div></div>
+
+            <div class="card">
+                <div class="ct">Doenças da Pobreza (Negligenciadas)</div>
+                <p>O Enem e vestibulares adoram relacionar biologia com problemas sociais. Doenças como <strong>Tuberculose, Cólera, Leptospirose e Hanseníase</strong> estão diretamente ligadas à falta de saneamento básico, água sem tratamento, moradias precárias (aglomeração) e falta de higiene.</p>
+            </div>
+
+            <div class="card">
+                <div class="ct">Bacterioses que você precisa saber:</div>
+                <div class="dc">
+                    <div class="dc-icon">💩</div>
+                    <div class="dc-body">
+                        <div class="dc-name">Cólera</div>
+                        <div class="dc-meta">Transmissão por água/alimentos com fezes. Falta de esgoto. Causa diarreia extrema.</div>
+                    </div>
+                </div>
+                <div class="dc">
+                    <div class="dc-icon">💧</div>
+                    <div class="dc-body">
+                        <div class="dc-name">Leptospirose</div>
+                        <div class="dc-meta">Contato com água de enchente contaminada com urina de rato.</div>
+                    </div>
+                </div>
+                <div class="dc">
+                    <div class="dc-icon">😶</div>
+                    <div class="dc-body">
+                        <div class="dc-name">Hanseníase (Lepra)</div>
+                        <div class="dc-meta">Manchas na pele que <strong>perdem a sensibilidade</strong> (destrói nervos locais).</div>
+                    </div>
+                </div>
+                <div class="dc">
+                    <div class="dc-icon">🤒</div>
+                    <div class="dc-body">
+                        <div class="dc-name">Sífilis</div>
+                        <div class="dc-meta">Doença sexualmente transmissível (IST) e passa da mãe pro feto.</div>
+                    </div>
+                </div>
+                <div class="dc">
+                    <div class="dc-icon">🔱</div>
+                    <div class="dc-body">
+                        <div class="dc-name">Tétano</div>
+                        <div class="dc-meta">Bactéria entra por cortes profundos. Causa fortes espasmos musculares.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec" id="tbk">
+            <div class="sh"><div class="si si-g">🫁</div><div class="st">Tuberculose (A mais cobrada)</div></div>
+
+            <div class="card">
+                <div class="ct">O Essencial da Tuberculose</div>
+                <ul class="l">
+                    <li><strong>Agente:</strong> Bacilo de Koch (Bactéria).</li>
+                    <li><strong>Transmissão:</strong> Pelo ar (tosse, espirro, fala). Quartos fechados e aglomeração são o maior perigo.</li>
+                    <li><strong>Alvo:</strong> Pulmão. A bactéria precisa de muito oxigênio para viver.</li>
+                    <li><strong>Sintomas:</strong> Tosse por mais de 3 semanas, tosse com sangue, febre e suor à noite.</li>
+                    <li><strong>O Problema do Tratamento:</strong> Demora 6 meses. O paciente melhora no primeiro mês, para de tomar o remédio, e as bactérias que sobreviveram voltam muito mais fortes (Superbactérias).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sec" id="resist">
+            <div class="sh"><div class="si si-b">💊</div><div class="st">Resistência aos Antibióticos</div></div>
+
+            <div class="card">
+                <div class="ct b">Seleção Natural (Isso CAI!)</div>
+                <div class="h hr"><b>🚨 REGRA DE OURO</b>O antibiótico NÃO causa mutação. A bactéria NÃO "se acostuma". A resistência já existia por acaso na natureza. O antibiótico apenas <strong>mata as fracas (sensíveis)</strong> e <strong>SELECIONA as fortes (resistentes)</strong>. Elas sobrevivem e dominam o corpo.</div>
+            </div>
+
+            <div class="card">
+                <div class="ct b">Conjugação Bacteriana</div>
+                <p>Como a resistência espalha rápido num hospital? Pela <strong>Conjugação</strong>. Uma bactéria resistente cria uma "ponte" e passa um pedaço do seu DNA (plasmídeo) para uma bactéria comum, que vira resistente na mesma hora.</p>
+            </div>
+
+            <div class="card">
+                <div class="ct b">Antibiograma (Exame)</div>
+                <p>Exame para ver qual antibiótico usar. Colocam a bactéria numa placa e jogam pastilhas de antibióticos.</p>
+                <ul class="l">
+                    <li><strong>Halo Grande (zona sem bactéria):</strong> O remédio funcionou. Bactéria é SENSÍVEL.</li>
+                    <li><strong>Halo Pequeno ou Zero:</strong> O remédio falhou. Bactéria é RESISTENTE (não receite isso!).</li>
+                </ul>
+
+                <div class="graph-box" style="margin-top:12px">
+                    <div class="graph-title">📊 Leitura de Antibiograma (Halos em mm)</div>
+                    <canvas id="cantibiograma" height="200"></canvas>
+                    <p style="font-size:11.5px;color:var(--tm);margin-top:6px">Se a regra for "Halo tem que ser maior que 20mm": Penicilina e Amoxicilina falharam (são barras vermelhas = bactéria resistiu). O resto funcionou.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec" id="ident">
+            <div class="sh"><div class="si si-p">🔬</div><div class="st">Identificação Rápida</div></div>
+
+            <div class="card">
+                <div class="ct p">Antibiótico NÃO MATA Vírus</div>
+                <p>Antibióticos destroem estruturas que só as bactérias têm (como a parede celular). Vírus não têm isso. Tomar antibiótico pra Dengue ou Gripe é inútil e só ajuda a criar superbactérias no seu corpo.</p>
+            </div>
+
+            <div class="card">
+                <div class="ct p">Tabela de Decoreba Rápida</div>
+                <table class="t">
+                    <tr><th class="g">Bactéria (Trata com Antibiótico)</th><th class="b">Vírus (Antibiótico não faz nada)</th><th class="p">Protozoário</th></tr>
+                    <tr>
+                        <td>
+                            • Tuberculose<br>• Cólera<br>• Leptospirose<br>• Hanseníase<br>• Tétano<br>• Sífilis
+                        </td>
+                        <td>
+                            • Dengue, Zika, Chikungunya<br>• Febre Amarela<br>• HIV/AIDS<br>• Raiva<br>• Gripe
+                        </td>
+                        <td>
+                            • Malária<br>• Doença de Chagas<br>• Leishmaniose
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="sec" id="mosq">
+            <div class="sh"><div class="si si-o">🦟</div><div class="st">Mosquitos (Vetores)</div></div>
+
+            <div class="card">
+                <div class="ct o">Aedes vs Anopheles (Foco Total)</div>
+                <table class="t">
+                    <tr><th class="o">Característica</th><th class="o">Aedes aegypti</th><th class="o">Anopheles</th></tr>
+                    <tr><td><b>Transmite o que?</b></td><td>Dengue, Zika, Chikungunya (VÍRUS)</td><td>Malária (PROTOZOÁRIO)</td></tr>
+                    <tr><td><b>Hábito / Horário</b></td><td>Diurno (Pica de dia)</td><td>Noturno e Crepuscular</td></tr>
+                    <tr><td><b>Local Preferido</b></td><td>Cidades (Urbano), água limpa parada</td><td>Área Rural, campo, beira de rio</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <div class="ct o">Detalhe da Malária</div>
+                <p>A Malária causa <strong>febre intermitente (em picos regulares)</strong>. Isso acontece porque o protozoário invade os glóbulos vermelhos do sangue e os destrói todos ao mesmo tempo, liberando toxinas que causam a febre.</p>
+            </div>
+        </div>
+
+        <div class="sec" id="graficos">
+            <div class="sh"><div class="si si-y">📊</div><div class="st">Análise de Gráficos (As 4 questões)</div></div>
+
+            <div class="card">
+                <div class="ct y">Dica de Ouro para os Gráficos</div>
+                <p>Sempre olhe o que está no eixo X (embaixo) e no Y (do lado). Onde a linha "quebra" (sobe ou desce do nada) é a resposta da questão.</p>
+            </div>
+
+            <div class="graph-box">
+                <div class="graph-title">📈 1. Ação do Antibiótico</div>
+                <canvas id="cgrowth" height="220"></canvas>
+                <div class="h hb" style="margin-top:10px"><b>O que significa:</b> A população cai na hora que o remédio entra. A voltinha no fim do gráfico é a pequena população resistente que não morreu e começou a crescer de novo.</div>
+            </div>
+
+            <div class="graph-box">
+                <div class="graph-title">📈 2. Seleção Natural na Prática</div>
+                <canvas id="cselect" height="220"></canvas>
+                <div class="h hg" style="margin-top:10px"><b>O que significa:</b> Sem o remédio, todos crescem. Com o remédio, os sensíveis (linha vermelha) morrem. Os resistentes (linha verde) sobrevivem e tomam conta do espaço. O ambiente "selecionou" o mais apto.</div>
+            </div>
+
+            <div class="graph-box">
+                <div class="graph-title">📈 3. Malária: Ciclo da Febre</div>
+                <canvas id="cmalaria" height="220"></canvas>
+                <div class="h ho" style="margin-top:10px"><b>O que significa:</b> Cada vez que os parasitas arrebentam as células do sangue (linha roxa sobe), o corpo reage com um pico de febre (linha laranja sobe junto). É o padrão exato da malária.</div>
+            </div>
+
+            <div class="graph-box">
+                <div class="graph-title">📈 4. Dengue x Clima</div>
+                <canvas id="cdengue" height="220"></canvas>
+                <div class="h hp" style="margin-top:10px"><b>O que significa:</b> Os casos de dengue (linha) aumentam imediatamente APÓS os meses com mais chuva (barras). Chuva = água parada = criadouro do Aedes = mais dengue.</div>
+            </div>
+        </div>
+
+        <div class="sec" id="qs">
+            <div class="sh"><div class="si si-b">🎯</div><div class="st">Quiz Final (Foco na Prova)</div></div>
+
+            <div id="qz">
+                <div class="qpbar"><div class="qpfill" id="qfill" style="width:0%"></div></div>
+                <div id="qzc"></div>
+            </div>
+        </div>
+
+    </main>
+    <footer>Revisão Blindada — Prova Dinho 🦠 · Boa Sorte!</footer>
+
+    <script>
+        function go(id){
+        document.getElementById(id).scrollIntoView({behavior:'smooth'});
+        document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+        event.target.classList.add('on');
+        }
+
+        function initCharts(){
+        const ctx1=document.getElementById('cantibiograma');
+        if(ctx1){
+        const c1=ctx1.getContext('2d');
+        drawBarChart(c1,ctx1,['Penicilina','Amoxicilina','Tetraciclina','Clindamicina','Vancomicina','Ciprofloxacino'],[6,10,26,30,28,24],20,'Halo (mm)');
+        }
+        const ctx2=document.getElementById('cgrowth');
+        if(ctx2){
+        const c2=ctx2.getContext('2d');
+        drawLineChart(c2,ctx2,Array.from({length:25},(v,i)=>i),[d=>{if(d<10)return Math.pow(2,d)*5;if(d<14)return Math.max(0,Math.pow(2,10)*5*Math.pow(0.4,d-10));if(d<17)return 50;return 50+Math.pow(1.8,d-17)*10;}],['#60a5fa'],['População bacteriana'],'Tempo','Nº bactérias',[{x:10,label:'Antibiótico entra',color:'#f87171'}]);
+        }
+        const ctx3=document.getElementById('cselect');
+        if(ctx3){
+        const c3=ctx3.getContext('2d');
+        const xs=Array.from({length:20},(v,i)=>i);
+        drawLineChart(c3,ctx3,xs,[d=>d<10?Math.pow(1.5,d)*10:Math.pow(1.5,10)*10,d=>d<10?Math.pow(1.5,d)*0.5:Math.pow(1.5,d-10)*0.5*Math.pow(1.9,d-10<10?d-10:10)],['#f87171','#4ade80'],['Sensíveis','Resistentes'],'Tempo','População',[{x:10,label:'Antibiótico',color:'#facc15'}]);
+        }
+        const ctx4=document.getElementById('cmalaria');
+        if(ctx4){
+        const c4=ctx4.getContext('2d');
+        const xs=Array.from({length:13},(v,i)=>i*0.5);
+        const febre=xs.map(x=>{const picos=[1,3,5,7,9,11].map(p=>({p,a:3.5*Math.exp(-0.5*Math.pow((x-p)/0.15,2))}));return 37+picos.reduce((s,v)=>s+v.a,0);});
+        const parasitemia=xs.map(x=>{const picos=[1,3,5,7,9,11].map(p=>({p,a:100*Math.exp(-0.5*Math.pow((x-p)/0.2,2))}));return picos.reduce((s,v)=>s+v.a,0);});
+        drawDualChart(c4,ctx4,xs,febre,parasitemia,'Febre (°C)','Parasitas no sangue','#fb923c','#a78bfa');
+        }
+        const ctx5=document.getElementById('cdengue');
+        if(ctx5){
+        const c5=ctx5.getContext('2d');
+        const meses=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+        const chuva=[280,250,230,110,60,30,20,25,60,130,200,260];
+        const casos=[800,1200,1400,900,400,150,80,70,200,500,700,950];
+        drawDualBarLine(c5,ctx5,meses,chuva,casos,'Chuva (mm)','Casos dengue','#60a5fa','#fb923c');
+        }
+        }
+        function drawBarChart(ctx,canvas,labels,values,limit,yLabel){
+        const W=canvas.width=canvas.offsetWidth||400;const H=canvas.height;const pad={t:20,r:20,b:50,l:50};const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;ctx.clearRect(0,0,W,H);const max=Math.max(...values,limit)*1.1;const bw=cw/values.length*0.6;const gap=cw/values.length;const ly=pad.t+ch*(1-limit/max);ctx.strokeStyle='#facc15';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(pad.l,ly);ctx.lineTo(pad.l+cw,ly);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#facc15';ctx.font='10px IBM Plex Sans';ctx.fillText('Limite p/ funcionar',pad.l+4,ly-4);values.forEach((v,i)=>{const x=pad.l+i*gap+gap/2-bw/2;const h=ch*(v/max);const y=pad.t+ch-h;ctx.fillStyle=v>=limit?'#4ade80':'#f87171';ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,bw,h,3):ctx.rect(x,y,bw,h);ctx.fill();ctx.fillStyle='#8b90b8';ctx.font='10px IBM Plex Sans';ctx.textAlign='center';ctx.fillText(labels[i],x+bw/2,H-pad.b+14);ctx.fillStyle='#e8eaf6';ctx.fillText(v+'mm',x+bw/2,y-4);});ctx.strokeStyle='#1c2240';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+ch);ctx.lineTo(pad.l+cw,pad.t+ch);ctx.stroke();
+        }
+        function drawLineChart(ctx,canvas,xs,fns,colors,labels,xLabel,yLabel,vlines){
+        const W=canvas.width=canvas.offsetWidth||400;const H=canvas.height;const pad={t:20,r:20,b:50,l:60};const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;ctx.clearRect(0,0,W,H);const vals=fns.map(fn=>xs.map(x=>fn(x)));const max=Math.max(...vals.flat())*1.1;ctx.strokeStyle='#1c2240';ctx.lineWidth=0.5;for(let i=0;i<=4;i++){const y=pad.t+i*ch/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();}(vlines||[]).forEach(vl=>{const xi=xs.indexOf(vl.x);if(xi<0)return;const xp=pad.l+xi/(xs.length-1)*cw;ctx.strokeStyle=vl.color;ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(xp,pad.t);ctx.lineTo(xp,pad.t+ch);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=vl.color;ctx.font='10px IBM Plex Sans';ctx.fillText(vl.label,xp+4,pad.t+10);});vals.forEach((vs,li)=>{ctx.strokeStyle=colors[li];ctx.lineWidth=2;ctx.beginPath();vs.forEach((v,i)=>{const xp=pad.l+i/(xs.length-1)*cw;const yp=pad.t+ch*(1-v/max);i===0?ctx.moveTo(xp,yp):ctx.lineTo(xp,yp);});ctx.stroke();ctx.fillStyle=colors[li];ctx.fillRect(pad.l+li*100,pad.t-2,12,8);ctx.fillStyle='#8b90b8';ctx.font='10px IBM Plex Sans';ctx.fillText(labels[li],pad.l+li*100+14,pad.t+6);});ctx.strokeStyle='#454a72';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+ch);ctx.lineTo(pad.l+cw,pad.t+ch);ctx.stroke();
+        }
+        function drawDualChart(ctx,canvas,xs,v1,v2,y1Label,y2Label,c1,c2){
+        const W=canvas.width=canvas.offsetWidth||400;const H=canvas.height;const pad={t:30,r:60,b:40,l:50};const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;ctx.clearRect(0,0,W,H);const max1=Math.max(...v1)*1.05,min1=Math.min(...v1)*0.98;const max2=Math.max(...v2)*1.1;[[v1,c1,max1,min1],[v2,c2,max2,0]].forEach(([vs,color,mx,mn],li)=>{ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();vs.forEach((v,i)=>{const xp=pad.l+i/(xs.length-1)*cw;const yp=pad.t+ch*(1-(v-mn)/(mx-mn));i===0?ctx.moveTo(xp,yp):ctx.lineTo(xp,yp);});ctx.stroke();});ctx.strokeStyle='#454a72';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+ch);ctx.lineTo(pad.l+cw,pad.t+ch);ctx.stroke();ctx.fillStyle=c1;ctx.fillRect(pad.l,pad.t-16,10,6);ctx.fillStyle='#8b90b8';ctx.font='10px IBM Plex Sans';ctx.fillText(y1Label,pad.l+13,pad.t-11);ctx.fillStyle=c2;ctx.fillRect(pad.l+140,pad.t-16,10,6);ctx.fillStyle='#8b90b8';ctx.fillText(y2Label,pad.l+153,pad.t-11);xs.filter((_,i)=>i%2===0).forEach((_,i)=>{const ri=i*2;const xp=pad.l+ri/(xs.length-1)*cw;ctx.fillStyle='#454a72';ctx.font='9px IBM Plex Sans';ctx.textAlign='center';ctx.fillText(xs[ri]+'d',xp,pad.t+ch+12);});
+        }
+        function drawDualBarLine(ctx,canvas,labels,bars,line,y1Label,y2Label,c1,c2){
+        const W=canvas.width=canvas.offsetWidth||400;const H=canvas.height;const pad={t:30,r:20,b:50,l:50};const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;ctx.clearRect(0,0,W,H);const maxB=Math.max(...bars)*1.1,maxL=Math.max(...line)*1.1;const bw=cw/labels.length*0.5;const gap=cw/labels.length;bars.forEach((v,i)=>{const x=pad.l+i*gap+gap/2-bw/2;const h=ch*(v/maxB);ctx.fillStyle=c1+'88';ctx.fillRect(x,pad.t+ch-h,bw,h);});ctx.strokeStyle=c2;ctx.lineWidth=2;ctx.beginPath();line.forEach((v,i)=>{const xp=pad.l+i*gap+gap/2;const yp=pad.t+ch*(1-v/maxL);i===0?ctx.moveTo(xp,yp):ctx.lineTo(xp,yp);});ctx.stroke();labels.forEach((l,i)=>{const xp=pad.l+i*gap+gap/2;ctx.fillStyle='#454a72';ctx.font='9px IBM Plex Sans';ctx.textAlign='center';ctx.fillText(l,xp,H-pad.b+14);});ctx.strokeStyle='#454a72';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+ch);ctx.lineTo(pad.l+cw,pad.t+ch);ctx.stroke();ctx.fillStyle=c1;ctx.fillRect(pad.l,pad.t-16,10,6);ctx.fillStyle='#8b90b8';ctx.font='10px IBM Plex Sans';ctx.fillText(y1Label,pad.l+13,pad.t-11);ctx.fillStyle=c2;ctx.fillRect(pad.l+120,pad.t-16,10,6);ctx.fillStyle='#8b90b8';ctx.fillText(y2Label,pad.l+133,pad.t-11);
+        }
+        setTimeout(initCharts,300);window.addEventListener('resize',initCharts);
+
+        const QD=[
+        {q:"No antibiograma, uma bactéria com halo de inibição muito pequeno é considerada:",o:["Sensível, o remédio funcionou.","Resistente, o remédio falhou e não deve ser usado.","Um vírus."],a:1,e:"Halo pequeno significa que o remédio não conseguiu afastar/matar a bactéria. Ela é resistente."},
+        {q:"A resistência aos antibióticos ocorre por quê?",o:["O remédio causa uma mutação na bactéria.","As bactérias se acostumam com o remédio.","Bactérias mutantes já existiam; o remédio só matou as fracas e deixou as fortes vivas (Seleção Natural)."],a:2,e:"O antibiótico não cria nada, ele apenas SELECIONA quem já tinha a mutação natural. Darwin na veia!"},
+        {q:"Por que a Tuberculose é ligada à pobreza?",o:["Por causa do clima frio.","A transmissão pelo ar é muito maior em lugares fechados, superlotados e sem ventilação.","A falta de saneamento básico espalha a bactéria na água."],a:1,e:"Tuberculose = Ar (aerossol). Moradia precária e aglomeração são o cenário perfeito pro Bacilo de Koch."},
+        {q:"Dengue, Cólera e Malária são causadas respectivamente por:",o:["Vírus, Bactéria, Protozoário","Vírus, Vírus, Protozoário","Protozoário, Bactéria, Vírus"],a:0,e:"Dengue = Vírus. Cólera = Bactéria (Vibrio). Malária = Protozoário (Plasmodium)."},
+        {q:"Por que não se usa antibiótico para curar a Dengue?",o:["Porque o vírus da Dengue é resistente a tudo.","Porque antibióticos atacam apenas bactérias (ex: quebrando a parede celular). Vírus não têm isso.","Porque o mosquito já neutralizou o antibiótico."],a:1,e:"Antibiótico MATA BACTÉRIA. Dengue é Vírus. Tomar antibiótico pra vírus é inútil."},
+        {q:"Qual é a doença em que a bactéria destrói os nervos da pele, causando manchas sem sensibilidade?",o:["Leptospirose","Sífilis","Hanseníase"],a:2,e:"Hanseníase (Lepra). A falta de sensibilidade na pele é a principal marca dela nas provas."},
+        {q:"Sobre os mosquitos vetores, marque a correta:",o:["Aedes pica de dia e transmite vírus (Dengue). Anopheles pica à noite/crepúsculo e transmite protozoário (Malária).","Ambos transmitem a mesma coisa em horários diferentes.","Anopheles é comum nas grandes cidades do sul do Brasil."],a:0,e:"Aedes é urbano, de dia, e carrega vírus. Anopheles é mais rural/florestal, noturno e carrega protozoário."},
+        {q:"A Leptospirose tem picos de casos durante enchentes por quê?",o:["A chuva traz o mosquito da doença.","O contato da pele ferida com a água suja misturada à urina do rato transmite a bactéria.","O frio da chuva baixa a imunidade."],a:1,e:"A bactéria fica na urina do rato. A enchente espalha essa urina por toda a rua e casas."}
+        ];
+
+        let cur=0,scr=0,ans=false;
+        function renderQ(){
+        if(cur>=QD.length){showRes();return;}
+        const q=QD[cur];
+        document.getElementById('qfill').style.width=(cur/QD.length*100)+'%';
+        ans=false;
+        document.getElementById('qzc').innerHTML=`
+        <div class="qnum">Questão ${cur+1} de ${QD.length}</div>
+        <div class="qq">${q.q}</div>
+        ${q.o.map((o,i)=>`<button class="qopt" id="zo${i}" onclick="ansQ(${i})">${String.fromCharCode(65+i)}) ${o}</button>`).join('')}
+        <div class="qfb" id="zfb"></div>
+        <button class="qnxt" id="znxt" onclick="nxtQ()">Próxima →</button>
+        `;
+        }
+        function ansQ(idx){
+        if(ans)return;ans=true;
+        const q=QD[cur];
+        for(let i=0;i<q.o.length;i++){document.getElementById('zo'+i).disabled=true;if(i===q.a)document.getElementById('zo'+i).classList.add('ok');}
+        const ch=document.getElementById('zo'+idx);
+        const fb=document.getElementById('zfb');
+        if(idx===q.a){scr++;fb.className='qfb on ok';fb.innerHTML='✅ <strong>Correto!</strong> '+q.e;}
+        else{ch.classList.add('no');fb.className='qfb on no';fb.innerHTML='❌ <strong>Incorreto.</strong> '+q.e;}
+        document.getElementById('znxt').classList.add('on');
+        }
+        function nxtQ(){cur++;renderQ();}
+        function showRes(){
+        document.getElementById('qfill').style.width='100%';
+        const p=Math.round(scr/QD.length*100);
+        document.getElementById('qzc').innerHTML=`<div class="qres"><div class="sc" style="color:var(--c1)">${p}%</div><p>${scr} de ${QD.length} corretas</p><button class="qrestart" onclick="restart()">🔄 Refazer</button></div>`;
+        }
+        function restart(){cur=0;scr=0;renderQ();}
+        renderQ();
+    </script>
+</body>
+</html>
